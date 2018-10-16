@@ -39,6 +39,6 @@ class GetAllSongsTest(BaseViewTest):
         expected = Songs.objects.all()
         serialized = SongsSerializer(expected, many=True)
         self.assertEqual(response.data, serialized.data)
-self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 # Create your tests here.
