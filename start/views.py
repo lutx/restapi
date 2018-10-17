@@ -5,11 +5,16 @@ from .serializers import SongsSerializer
 
 
 class ListSongsView(generics.ListCreateAPIView):
-    """
-    Provides a get method handler.
-    """
+    
     queryset = Songs.objects.all()
     serializer_class = SongsSerializer
 
     def perform_create(self,serializer):
     	serializer.save() 
+class DetailsView(generics.RetrieveUpdateDestroyAPIView):
+
+	#This class handles GET,PUT,DELETE requests
+	queryset = Songs.objects.all()
+	serializer_class = SongsSerializer
+
+
