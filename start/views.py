@@ -3,6 +3,9 @@ from rest_framework import permissions
 from .permissions import IsOwner
 from .models import Songs
 from .serializers import SongsSerializer
+from .serializers import UserSerializer
+from django.contrib.auth.models import User
+
 
 
 class ListSongsView(generics.ListCreateAPIView):
@@ -21,5 +24,16 @@ class DetailsView(generics.RetrieveUpdateDestroyAPIView):
 	queryset = Songs.objects.all()
 	serializer_class = SongsSerializer
 	permission_classes = (permissions.IsAuthenticated,IsOwner)
+
+class UserView(generics.ListAPIView):
+    """View to list the user queryset."""
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class UserDetailsView(generics.RetrieveAPIView):
+    """View to retrieve a user instance."""
+    queryset = User.objects.all()
+    serializer_class = UserSerializer	
 
 
