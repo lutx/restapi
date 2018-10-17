@@ -5,7 +5,8 @@ from .views import ListSongsView
 from .views import DetailsView
 
 urlpatterns = [
-    url(r'^songs/$', ListSongsView.as_view(), name="songs-all"),
-    url(r'^songs/(?P<pk>[0-9]+)/$',DetailsView.as_view(),name="details"),
+    url(r'^api/songs/$', ListSongsView.as_view(), name="songs-all"),
+    url(r'^api/songs/(?P<pk>[0-9]+)/$',DetailsView.as_view(),name="details"),
+    url(r'^auth/', include('rest_framework.urls', namespace='rest_framework')), 
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)
